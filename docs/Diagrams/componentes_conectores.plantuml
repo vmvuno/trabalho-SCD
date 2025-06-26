@@ -1,0 +1,99 @@
+@startuml
+title Diagrama arquitetural (Componentes e conectores + Alocação)
+skinparam linetype ortho
+
+actor User
+
+folder FrontEnd {
+    node ArquivosEstáticos #line.dashed {
+        node pod1 [
+            Servidor de arquivos estáticos
+            ---
+            Replicável conforme demanda;
+            ---
+            Distribui os arquivos do Front-end
+            ===
+            NGINX
+        ]
+    }
+}
+
+boundary Front
+User <-> Front : input
+pod1 ----> Front : serve: HTTPS - TCP (10000)
+
+
+folder BackEnd {
+    node OrderService #line.dashed {
+        node pod2 [
+            API REST
+            ---
+            Replicável conforme demanda
+            ---
+            Recebe pedidos dos usuários
+            ===
+            Java + Spring Boot
+        ]
+    }
+
+    database OrderDB [
+        Dados de pedidos
+        ---
+        Identificador
+        Usuário,
+        Itens
+        ===
+        PostgreeSQL (orderDB)
+    ]
+
+
+    node InventoryService #line.dashed {
+        node pod3 [
+            Aplicação Java
+            ---
+            Replicável conforme demanda
+            ---
+            Realiza a baixa de itens no inventário
+            ===
+            Java + Spring Boot
+        ]
+    }
+
+    database InventoryDB [
+        Dados de inventário
+        ---
+        Itens disponíveis
+        Quantidade de itens disponíveis
+        ===
+        PostgreeSQL (inventoryDB)
+    ]
+
+    node NotificationService #line.dashed {
+        node pod4 [
+            Aplicação Java
+            ---
+            Replicável conforme demanda
+            ---
+            Agendamenta de consultas virtuais;
+            Reuniões com especialistas
+            ===
+            Java + Spring Boot
+        ]
+    } 
+    queue orders
+    queue inventoryEvents
+}
+
+
+Front <---> pod2 : REST - HTTP - TCP (1001)
+OrderDB <-> pod2 : "TCP (5432)"
+pod2 --> orders : TCP (61616)
+orders <---> pod3 : TCP (61616)
+
+pod3 <-> InventoryDB : TCP (5432)
+pod3 --> inventoryEvents  :TCP (61616)
+inventoryEvents <---> pod4 :TCP (61616)
+
+NotificationService -[dashed]up--> User: email
+
+@enduml

@@ -1,0 +1,69 @@
+services:
+  inventoryDB:
+    image: postgres:17.5-alpine3.22
+    container_name: ProjetoSCD_inventoryDB
+    restart: always
+    shm_size: 128mb
+    ports:
+      - 9990:5432
+    volumes:
+      - ./InventoryDBData:/var/lib/postgresql
+      - ./InventoryDBInit:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_PASSWORD: senha123
+      POSTGRES_USER: SCD
+
+  orderDB:
+    image: postgres:17.5-alpine3.22
+    container_name: ProjetoSCD_orderDB
+    restart: always
+    shm_size: 128mb
+    ports:
+      - 9991:5432
+
+    volumes:
+      - ./OrderDBData:/var/lib/postgresql
+      - ./OrderDBInit:/docker-entrypoint-initdb.d
+
+    environment:
+      POSTGRES_PASSWORD: senha123
+      POSTGRES_USER: SCD
+
+  activemq:
+    image: webcenter/activemq:5.14.3
+    container_name: ProjetoSCD_AMQ
+    restart: always
+    ports:
+      - 9992:8161
+    volumes:
+      - ./activemq/data:/data/activemq
+      - ./activemq/logs:/var/log/activemq
+    environment:
+      ACTIVEMQ_ADMIN_LOGIN: scd
+      ACTIVEMQ_ADMIN_PASSWORD: senha123
+
+  orderService:
+    image: orderservice
+    container_name: ProjetoSCD_OrderService
+    build: OrderService
+    depends_on:
+      - orderDB
+      - activemq
+    
+    ports:
+      - 10000:8080
+
+  inventoryService:
+    image: inventoryservice
+    container_name: ProjetoSCD_InventoryService
+    build: InventoryService
+    depends_on:
+      - inventoryDB
+      - activemq
+
+  notificationService:
+    image: notificationservice
+    container_name: ProjetoSCD_NotificationService
+    build: NotificationService
+    depends_on:
+      - activemq

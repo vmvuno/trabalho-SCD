@@ -1,0 +1,28 @@
+@startuml
+actor Usuário
+boundary FrontEnd
+control OrderService
+database OrderDB
+queue orders
+control InventoryService
+database InventoryDB
+queue InventoryEvents
+control NotificationService
+
+Usuário -> FrontEnd: 0 - interage
+FrontEnd -> OrderService: 1 - POST /order
+OrderService -> OrderDB: 2 - registra o pedido
+OrderService -> orders: 3 - Publica o pedido
+orders <- InventoryService: 4 - Solicita pedido
+orders -> InventoryService: 5 - Responde pedido
+InventoryService -> InventoryDB: 6 - Realiza transação do estoque
+InventoryService <- InventoryDB: 7 - Recebe resultado da transação
+alt sucesso
+InventoryService -> InventoryEvents: 8 - Registra evento de sucesso
+else falha ao realizar a transação
+InventoryService -> InventoryEvents: 8 - Registra evento de falha
+end
+NotificationService -> InventoryEvents: 9 - Solicita um evento
+NotificationService <- InventoryEvents: 10 - Devolve um evento
+NotificationService -> Usuário: 11 - Notifica usuário
+@enduml

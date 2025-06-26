@@ -1,0 +1,1093 @@
+{
+	"info": {
+		"_postman_id": "ccc560eb-232d-44d1-bbd4-fb7abefbcd8d",
+		"name": "Projeto final - Software Concorrente e Distribuído",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11285653"
+	},
+	"item": [
+		{
+			"name": "Pedidos",
+			"item": [
+				{
+					"name": "Buscar todos os pedidos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}:{{port}}/orders?page=0&size=20",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Add your name in the body\"\n}"
+								},
+								"url": {
+									"raw": "{{baseURL}}:{{port}}/orders?page=0&size=20",
+									"host": [
+										"{{baseURL}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 25 Jun 2025 23:41:08 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"c062106b-5adf-4c08-88a0-d2ef0ddf15be\",\n        \"contactEmail\": \"fulano365@gmail.com\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Buscar pedido por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}:{{port}}/orders/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "c062106b-5adf-4c08-88a0-d2ef0ddf15be"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}:{{port}}/orders/:id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"orders",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "c062106b-5adf-4c08-88a0-d2ef0ddf15be"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/hal+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 25 Jun 2025 23:45:47 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"contactEmail\": \"fulano365@gmail.com\",\n    \"_links\": {\n        \"self\": {\n            \"href\": \"http://localhost:10000/orders/c062106b-5adf-4c08-88a0-d2ef0ddf15be\"\n        },\n        \"order\": {\n            \"href\": \"http://localhost:10000/orders/c062106b-5adf-4c08-88a0-d2ef0ddf15be\"\n        },\n        \"orderItems\": {\n            \"href\": \"http://localhost:10000/orders/c062106b-5adf-4c08-88a0-d2ef0ddf15be/orderItems\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Buscar itens de um pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}:{{port}}/orders/:id/orderItems",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orders",
+								":id",
+								"orderItems"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "c062106b-5adf-4c08-88a0-d2ef0ddf15be"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Buscar itens de um pedido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}:{{port}}/orders/:id/orderItems",
+									"host": [
+										"{{baseURL}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"orders",
+										":id",
+										"orderItems"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "c062106b-5adf-4c08-88a0-d2ef0ddf15be"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/hal+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 25 Jun 2025 23:44:52 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_embedded\": {\n        \"orderItems\": [\n            {\n                \"quantity\": 5,\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/orderItems/1\"\n                    },\n                    \"orderItem\": {\n                        \"href\": \"http://localhost:10000/orderItems/1\"\n                    },\n                    \"order\": {\n                        \"href\": \"http://localhost:10000/orderItems/1/order\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/orderItems/1/product\"\n                    }\n                }\n            },\n            {\n                \"quantity\": 80,\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/orderItems/2\"\n                    },\n                    \"orderItem\": {\n                        \"href\": \"http://localhost:10000/orderItems/2\"\n                    },\n                    \"order\": {\n                        \"href\": \"http://localhost:10000/orderItems/2/order\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/orderItems/2/product\"\n                    }\n                }\n            }\n        ]\n    },\n    \"_links\": {\n        \"self\": {\n            \"href\": \"http://localhost:10000/orders/c062106b-5adf-4c08-88a0-d2ef0ddf15be/orderItems\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Criar pedido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"contactEmail\": \"fulano365@gmail.com\",\n    \"orderItems\": [\n        {\n            \"product\": \"1ea35760-4fae-11f0-90c7-325096b39f47\",\n            \"quantity\": 5\n        },\n                {\n            \"product\": \"1ea357ce-4fae-11f0-946d-325096b39f47\",\n            \"quantity\": 80\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:10000/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "10000",
+							"path": [
+								"orders"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": [
+						{
+							"name": "Post data",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"contactEmail\": \"fulano365@gmail.com\",\n    \"orderItems\": [\n        {\n            \"product\": \"1ea35760-4fae-11f0-90c7-325096b39f47\",\n            \"quantity\": 5\n        },\n                {\n            \"product\": \"1ea357ce-4fae-11f0-946d-325096b39f47\",\n            \"quantity\": 80\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:10000/orders",
+									"host": [
+										"localhost"
+									],
+									"port": "10000",
+									"path": [
+										"orders"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 25 Jun 2025 23:39:30 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Seu pedido será processado e você será informado do resultado via mensagem/e-mail"
+						}
+					]
+				},
+				{
+					"name": "Excluir pedido",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}:{{port}}/orders/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "c062106b-5adf-4c08-88a0-d2ef0ddf15be"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}:{{port}}/orders/:id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"orders",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "c062106b-5adf-4c08-88a0-d2ef0ddf15be"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/hal+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 25 Jun 2025 23:48:45 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"contactEmail\": \"fulano365@gmail.com\",\n    \"_links\": {\n        \"self\": {\n            \"href\": \"http://localhost:10000/orders/c062106b-5adf-4c08-88a0-d2ef0ddf15be\"\n        },\n        \"order\": {\n            \"href\": \"http://localhost:10000/orders/c062106b-5adf-4c08-88a0-d2ef0ddf15be\"\n        },\n        \"orderItems\": {\n            \"href\": \"http://localhost:10000/orders/c062106b-5adf-4c08-88a0-d2ef0ddf15be/orderItems\"\n        }\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Provê uma interface para buscar informações relativas aos pedidos armazenados no sistema."
+		},
+		{
+			"name": "Itens de pedido",
+			"item": [
+				{
+					"name": "Buscar todos os itens de pedidos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}:{{port}}/orderItems?page=0&size=100",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orderItems"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Buscar todos os pedidos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Add your name in the body\"\n}"
+								},
+								"url": {
+									"raw": "{{baseURL}}:{{port}}/orderItems?page=0&size=100",
+									"host": [
+										"{{baseURL}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"orderItems"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "100"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/hal+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 25 Jun 2025 23:55:36 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_embedded\": {\n        \"orderItems\": [\n            {\n                \"quantity\": 5,\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/orderItems/3\"\n                    },\n                    \"orderItem\": {\n                        \"href\": \"http://localhost:10000/orderItems/3\"\n                    },\n                    \"order\": {\n                        \"href\": \"http://localhost:10000/orderItems/3/order\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/orderItems/3/product\"\n                    }\n                }\n            },\n            {\n                \"quantity\": 80,\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/orderItems/4\"\n                    },\n                    \"orderItem\": {\n                        \"href\": \"http://localhost:10000/orderItems/4\"\n                    },\n                    \"order\": {\n                        \"href\": \"http://localhost:10000/orderItems/4/order\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/orderItems/4/product\"\n                    }\n                }\n            }\n        ]\n    },\n    \"_links\": {\n        \"self\": {\n            \"href\": \"http://localhost:10000/orderItems?page=0&size=100\"\n        },\n        \"profile\": {\n            \"href\": \"http://localhost:10000/profile/orderItems\"\n        }\n    },\n    \"page\": {\n        \"size\": 100,\n        \"totalElements\": 2,\n        \"totalPages\": 1,\n        \"number\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Buscar item de pedido por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}:{{port}}/orderItems/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orderItems",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Buscar pedido por ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}:{{port}}/orderItems/:id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"orderItems",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/hal+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 25 Jun 2025 23:56:45 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"quantity\": 5,\n    \"_links\": {\n        \"self\": {\n            \"href\": \"http://localhost:10000/orderItems/3\"\n        },\n        \"orderItem\": {\n            \"href\": \"http://localhost:10000/orderItems/3\"\n        },\n        \"order\": {\n            \"href\": \"http://localhost:10000/orderItems/3/order\"\n        },\n        \"product\": {\n            \"href\": \"http://localhost:10000/orderItems/3/product\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Buscar ordem a que pertence um item de pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}:{{port}}/orderItems/:id/order",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orderItems",
+								":id",
+								"order"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Buscar itens de um pedido",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}:{{port}}/orderItems/:id/order",
+									"host": [
+										"{{baseURL}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"orderItems",
+										":id",
+										"order"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Location",
+									"value": "http://localhost:10000/orders/8a39a0ef-02d9-418b-93af-d933f2e8a200"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/hal+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 25 Jun 2025 23:58:26 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"contactEmail\": \"fulano365@gmail.com\",\n    \"_links\": {\n        \"self\": {\n            \"href\": \"http://localhost:10000/orders/8a39a0ef-02d9-418b-93af-d933f2e8a200\"\n        },\n        \"order\": {\n            \"href\": \"http://localhost:10000/orders/8a39a0ef-02d9-418b-93af-d933f2e8a200\"\n        },\n        \"orderItems\": {\n            \"href\": \"http://localhost:10000/orders/8a39a0ef-02d9-418b-93af-d933f2e8a200/orderItems\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Excluir item de pedido",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}:{{port}}/orderItems/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"orderItems",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}:{{port}}/orderItems/:id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"orderItems",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/hal+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 25 Jun 2025 23:59:56 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"quantity\": 5,\n    \"_links\": {\n        \"self\": {\n            \"href\": \"http://localhost:10000/orderItems/3\"\n        },\n        \"orderItem\": {\n            \"href\": \"http://localhost:10000/orderItems/3\"\n        },\n        \"order\": {\n            \"href\": \"http://localhost:10000/orderItems/3/order\"\n        },\n        \"product\": {\n            \"href\": \"http://localhost:10000/orderItems/3/product\"\n        }\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Provê uma interface para buscar informações relativas aos pedidos armazenados no sistema."
+		},
+		{
+			"name": "Produtos",
+			"item": [
+				{
+					"name": "Buscar todos os produtos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Add your name in the body\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}:{{port}}/products?page=0&size=20",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "20"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Buscar todos os pedidos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Add your name in the body\"\n}"
+								},
+								"url": {
+									"raw": "{{baseURL}}:{{port}}/products?page=0&size=20",
+									"host": [
+										"{{baseURL}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "size",
+											"value": "20"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/hal+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 25 Jun 2025 23:51:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_embedded\": {\n        \"products\": [\n            {\n                \"name\": \"Processador Core i9-13900K\",\n                \"description\": \"Processador Intel de 13ª Geração, 24 Cores, ideal para gaming e produtividade.\",\n                \"price\": 4200,\n                \"brand\": {\n                    \"name\": \"Intel\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea356f2-4fae-11f0-880d-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea356f2-4fae-11f0-880d-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador Core i7-13700K\",\n                \"description\": \"Processador Intel de 13ª Geração, 16 Cores, excelente para multitarefas.\",\n                \"price\": 3100,\n                \"brand\": {\n                    \"name\": \"Intel\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35760-4fae-11f0-90c7-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35760-4fae-11f0-90c7-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador Core i5-13600K\",\n                \"description\": \"Processador Intel de 13ª Geração, 14 Cores, ótimo custo-benefício.\",\n                \"price\": 2300,\n                \"brand\": {\n                    \"name\": \"Intel\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea357ce-4fae-11f0-946d-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea357ce-4fae-11f0-946d-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador Ryzen 9 7950X\",\n                \"description\": \"Processador AMD Zen 4, 16 Cores, alto desempenho para criadores de conteúdo.\",\n                \"price\": 4500,\n                \"brand\": {\n                    \"name\": \"AMD\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35846-4fae-11f0-b472-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35846-4fae-11f0-b472-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador Ryzen 7 7700X\",\n                \"description\": \"Processador AMD Zen 4, 8 Cores, excelente para jogos e aplicações.\",\n                \"price\": 2900,\n                \"brand\": {\n                    \"name\": \"AMD\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea358be-4fae-11f0-9409-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea358be-4fae-11f0-9409-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador Ryzen 5 7600X\",\n                \"description\": \"Processador AMD Zen 4, 6 Cores, desempenho sólido para gamers.\",\n                \"price\": 2000,\n                \"brand\": {\n                    \"name\": \"AMD\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea3592c-4fae-11f0-9fb1-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea3592c-4fae-11f0-9fb1-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador Core i3-12100\",\n                \"description\": \"Processador Intel de 12ª Geração, 4 Cores, para uso básico e escritório.\",\n                \"price\": 850,\n                \"brand\": {\n                    \"name\": \"Intel\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea359a4-4fae-11f0-8e8a-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea359a4-4fae-11f0-8e8a-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador Ryzen 3 4100\",\n                \"description\": \"Processador AMD para entrada, 4 Cores, bom para sistemas básicos.\",\n                \"price\": 550,\n                \"brand\": {\n                    \"name\": \"AMD\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35a12-4fae-11f0-9de8-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35a12-4fae-11f0-9de8-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador Intel Core i5-12400\",\n                \"description\": \"Processador Intel 12ª Geração, 6 Cores, ideal para gaming.\",\n                \"price\": 1250,\n                \"brand\": {\n                    \"name\": \"Intel\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35a80-4fae-11f0-a54a-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35a80-4fae-11f0-a54a-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador AMD Ryzen 5 5600\",\n                \"description\": \"Processador AMD Zen 3, 6 Cores, ótimo para jogos e produtividade.\",\n                \"price\": 1000,\n                \"brand\": {\n                    \"name\": \"AMD\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35aee-4fae-11f0-8ccc-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35aee-4fae-11f0-8ccc-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador Intel Core i9-12900K\",\n                \"description\": \"Processador Intel 12ª Geração, 16 Cores, alta performance.\",\n                \"price\": 3800,\n                \"brand\": {\n                    \"name\": \"Intel\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35b66-4fae-11f0-80fc-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35b66-4fae-11f0-80fc-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador AMD Ryzen 7 5800X3D\",\n                \"description\": \"Processador AMD com 3D V-Cache para gaming extremo.\",\n                \"price\": 2800,\n                \"brand\": {\n                    \"name\": \"AMD\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35bd4-4fae-11f0-bdef-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35bd4-4fae-11f0-bdef-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador Intel Core i7-11700F\",\n                \"description\": \"Processador Intel 11ª Geração, 8 Cores, sem gráficos integrados.\",\n                \"price\": 1500,\n                \"brand\": {\n                    \"name\": \"Intel\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35c4c-4fae-11f0-9886-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35c4c-4fae-11f0-9886-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador Intel Core i7-14700K\",\n                \"description\": \"Processador Intel 14ª Geração, 20 Cores, para alta performance.\",\n                \"price\": 3900,\n                \"brand\": {\n                    \"name\": \"Intel\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35cba-4fae-11f0-8dd6-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35cba-4fae-11f0-8dd6-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador AMD Ryzen 9 7900X\",\n                \"description\": \"Processador AMD Zen 4, 12 Cores, ótimo para multitarefas.\",\n                \"price\": 3800,\n                \"brand\": {\n                    \"name\": \"AMD\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35d32-4fae-11f0-a9b3-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35d32-4fae-11f0-a9b3-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador Intel Core i3-13100\",\n                \"description\": \"Processador Intel 13ª Geração, 4 Cores, bom para entrada.\",\n                \"price\": 950,\n                \"brand\": {\n                    \"name\": \"Intel\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35da0-4fae-11f0-950b-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35da0-4fae-11f0-950b-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador AMD Ryzen 5 5500\",\n                \"description\": \"Processador AMD Zen 3, 6 Cores, bom custo-benefício.\",\n                \"price\": 800,\n                \"brand\": {\n                    \"name\": \"AMD\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35e18-4fae-11f0-bac5-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35e18-4fae-11f0-bac5-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Processador Intel Celeron G6900\",\n                \"description\": \"Processador Intel de entrada para PCs de baixo custo.\",\n                \"price\": 400,\n                \"brand\": {\n                    \"name\": \"Intel\"\n                },\n                \"category\": {\n                    \"name\": \"Processadores\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35e86-4fae-11f0-a2dc-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35e86-4fae-11f0-a2dc-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Placa de Vídeo RTX 4090\",\n                \"description\": \"NVIDIA GeForce RTX 4090, 24GB GDDR6X, o topo de linha para 4K.\",\n                \"price\": 12000,\n                \"brand\": {\n                    \"name\": \"NVIDIA\"\n                },\n                \"category\": {\n                    \"name\": \"Placas de Vídeo\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35ef4-4fae-11f0-b857-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35ef4-4fae-11f0-b857-325096b39f47\"\n                    }\n                }\n            },\n            {\n                \"name\": \"Placa de Vídeo RTX 4080\",\n                \"description\": \"NVIDIA GeForce RTX 4080, 16GB GDDR6X, excelente desempenho.\",\n                \"price\": 8500,\n                \"brand\": {\n                    \"name\": \"NVIDIA\"\n                },\n                \"category\": {\n                    \"name\": \"Placas de Vídeo\"\n                },\n                \"_links\": {\n                    \"self\": {\n                        \"href\": \"http://localhost:10000/products/1ea35f6c-4fae-11f0-8535-325096b39f47\"\n                    },\n                    \"product\": {\n                        \"href\": \"http://localhost:10000/products/1ea35f6c-4fae-11f0-8535-325096b39f47\"\n                    }\n                }\n            }\n        ]\n    },\n    \"_links\": {\n        \"first\": {\n            \"href\": \"http://localhost:10000/products?page=0&size=20\"\n        },\n        \"self\": {\n            \"href\": \"http://localhost:10000/products?page=0&size=20\"\n        },\n        \"next\": {\n            \"href\": \"http://localhost:10000/products?page=1&size=20\"\n        },\n        \"last\": {\n            \"href\": \"http://localhost:10000/products?page=9&size=20\"\n        },\n        \"profile\": {\n            \"href\": \"http://localhost:10000/profile/products\"\n        },\n        \"search\": {\n            \"href\": \"http://localhost:10000/products/search\"\n        }\n    },\n    \"page\": {\n        \"size\": 20,\n        \"totalElements\": 199,\n        \"totalPages\": 10,\n        \"number\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Buscar produto por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}:{{port}}/products/:id",
+							"host": [
+								"{{baseURL}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1ea356f2-4fae-11f0-880d-325096b39f47"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Buscar pedido por ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}:{{port}}/products/:id",
+									"host": [
+										"{{baseURL}}"
+									],
+									"port": "{{port}}",
+									"path": [
+										"products",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1ea356f2-4fae-11f0-880d-325096b39f47"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/hal+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 25 Jun 2025 23:52:48 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Processador Core i9-13900K\",\n    \"description\": \"Processador Intel de 13ª Geração, 24 Cores, ideal para gaming e produtividade.\",\n    \"price\": 4200,\n    \"brand\": {\n        \"name\": \"Intel\"\n    },\n    \"category\": {\n        \"name\": \"Processadores\"\n    },\n    \"_links\": {\n        \"self\": {\n            \"href\": \"http://localhost:10000/products/1ea356f2-4fae-11f0-880d-325096b39f47\"\n        },\n        \"product\": {\n            \"href\": \"http://localhost:10000/products/1ea356f2-4fae-11f0-880d-325096b39f47\"\n        }\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Provê uma interface para buscar informações relativas aos pedidos armazenados no sistema."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}

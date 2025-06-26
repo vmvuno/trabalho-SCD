@@ -1,0 +1,48 @@
+@startuml
+package InventoryDB <<Database>> {
+    entity InventoryItems {
+        * ProdutoID \t\t\t:UUID
+        ---
+        * QuantidadeEstoque \t:INT
+    }
+}
+
+package OrderDB <<Database>> {
+    entity Marcas {
+        * MarcaID \t\t: SERIAL
+        ---
+        * NomeMarca \t: VARCHAR(50)
+    }
+
+    entity Categorias {
+        * CategoriaID \t\t: SERIAL
+        ---
+        * NomeCategoria \t: VARCHAR(100)
+    }
+
+    entity Produtos {
+        * ProdutoID \t\t: UUID
+        ---
+        * NomeProduto \t: VARCHAR(100)
+        * Descricao \t\t: VARCHAR(500)
+        * Preco \t\t\t: DECIMAL(10, 2)
+    }
+
+    entity OrderItem {
+        * id \t\t\t: LONG
+        ---
+        * quantity \t\t: INTEGER
+    }
+
+    entity Pedidos {
+        * PedidoID \t: UUID
+        ---
+        * EmailContato \t: VARCHAR(200)
+    }
+}
+
+Marcas ||---{ Produtos
+Categorias ||---{ Produtos
+Produtos ||--{ OrderItem
+OrderItem }--|| Pedidos
+@enduml
